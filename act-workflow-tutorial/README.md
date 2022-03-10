@@ -329,6 +329,10 @@ tail: ci-logs/run.log: file truncated
 
 Happy workflowing :+1:
 
+## Final Notes
+
+You can find the template files used for this tutorial in this [repo](https://github.com/orphefs/tutorials/tree/main/act-workflow-tutorial).
+
 ## Acknowledgements
 
 This tutorial was inspired by:
