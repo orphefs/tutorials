@@ -328,3 +328,11 @@ tail: ci-logs/run.log: file truncated
 ```
 
 Happy workflowing :+1:
+
+## Acknowledgements
+
+This tutorial was inspired by:
+
+- <https://gauravgahlot.in/blog/run-github-actions-locally-docker-nektos-act/>
+- Conversations with the `act` developers on [Gitter](https://gitter.im/nektos/act)
+- Coffee
