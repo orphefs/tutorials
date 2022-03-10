@@ -255,7 +255,7 @@ Once we decide which `act` image to use (pre-built or our own), we also have to 
 
 Contents of `.actrc`:
 
-```bash
+```sh
 -P ubuntu-latest=ubuntu:act-20.04
 ```
 
@@ -267,7 +267,7 @@ Now, let's include the new argument inside `Dockerfile`:
 
 Contents of `Dockerfile`:
 
-```bash
+```Dockerfile
 FROM docker:dind
 
 
@@ -293,7 +293,7 @@ Now we can run the `dind` container using
 
 ```bash
 sudo docker run -d --rm \ # delete container when finished
-    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v /var/run/docker.sock:/var/run/docker.sock \ # need to pass on the Docker daemon unix socket
     -v $(pwd)/my-repo:/project \ # mount my-repo into /project inside container
     -v $(pwd)/ci-logs:/logs \ # logs directory
     -v $(pwd)/secret:/secret \ # mount secret/ directory into /secret directory inside container
