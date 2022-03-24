@@ -237,8 +237,18 @@ As of the time of writing this, the [Ubuntu 20.04 image](https://github.com/catt
 ```Dockerfile
 FROM ghcr.io/catthehacker/ubuntu:act-20.04
 
-RUN curl -sL https://aka.ms/InstallAzureCLIDeb | sudo >bash
+# The following installs azure-cli (https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-linux?pivots=apt)
 
+RUN apt-get update
+
+RUN apt-get install -y ca-certificates curl apt-transport-https lsb-release gnupg
+
+RUN curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null
+
+RUN echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/azure-cli.list
+
+RUN apt-get update
+RUN apt-get install -y azure-cli
 ```
 
 We have to first build the `act` image:
